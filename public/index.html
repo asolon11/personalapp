@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+        <title>Resume Webpage</title>
+
+    </head>
+    <body style=padding:20px>
+        <div class="container" ng-controller="AppCtrl">
+            <div class="page-header text-center">
+                <h1>Alyssa's Resume</h1>
+            </div>
+
+            <div class="jumbotron" style="padding:30px">
+                <h2>Education</h2>
+                <hr/>
+
+                <!--  repeat object copies our objects into three separate bullets(this prints out all the stuff from dummy data for edu)-->
+                <ul ng-repeat="edu in resume | filter: {type: 'edu'}">
+                    <li><b>{{edu.school}}</b>
+                    <br>Degree: {{edu.degree}}
+                    <br>Year finished: {{edu.last_year}}</li>
+                </ul>
+            </div>
+
+            <div class="jumbotron" style="padding:30px">
+                <h2>Skills</h2>
+                <hr/>
+
+                <ul ng-repeat="obj in resume | filter: {type: 'skill'}">
+                    <li>{{obj.skill}}</li>
+                </ul>
+
+            </div>
+
+            <div class="jumbotron" style="padding:30px">
+                <h2>Projects</h2>
+                <hr/>
+
+                <ul ng-repeat="proj in resume | filter: {type: 'project'}">
+                    <li><b>{{proj.title}}</b>
+                    <br>{{proj.description}}</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="controllers/controller.js"></script>
+    </body>
+</html>
